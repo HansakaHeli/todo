@@ -1,26 +1,14 @@
 {
-  "name": "todo2",
-  "version": "0.1.0",
+  "name": "todo2-monorepo",
   "private": true,
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.1.1",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "dev:frontend": "pnpm -C frontend dev",
+    "dev:backend": "pnpm -C backend dev",
+    "dev:all": "concurrently -n web,api -c cyan,magenta \"pnpm dev:frontend\" \"pnpm dev:backend\"",
+    "build": "pnpm -C frontend build && pnpm -C backend build"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "concurrently": "^9.2.1"
   }
 }
